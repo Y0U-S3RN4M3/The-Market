@@ -460,11 +460,11 @@ const sellButtonMap = {
 };
 
 function setupSellButtons() {
-    for (const key in gameState) {
-        if (key === "cashCount") continue;
+    const sellableItems = Object.keys(sellButtonMap);
+
+    for (const key of sellableItems) {
 
         const itemName = sellButtonMap[key];
-        if (!itemName) continue;
 
         const singleBtn = document.getElementById(`sell-${itemName}`);
         const allBtn = document.getElementById(`sell-all-${itemName}`);
@@ -505,56 +505,6 @@ function setupSellButtons() {
         }
     }
 }
-
-// function setupSellButtons() {
-//     for (const key in gameState) {
-//         if (key === "cashCount") continue;
-
-//         const itemName = camelToKebab(key);
-
-//         const singleBtn = document.getElementById(`sell-${itemName}`);
-//         const allBtn = document.getElementById(`sell-all-${itemName}s`);
-
-//         // ---------------- SELL ONE ----------------
-//         if (singleBtn) {
-//             singleBtn.addEventListener("click", () => {
-//                 if (gameState[key] <= 0) return;
-
-//                 const price = prices[key];
-//                 const gain = Math.floor(price * getRandomSellMultiplier());
-//                 const multigain = gain + (gain * gameState.multiplier);
-
-//                 gameState[key] -= 1;
-//                 gameState.cashCount += multigain;
-
-//                 saveGame();
-//                 updateUI();
-//             });
-//         }
-
-//         // ---------------- SELL ALL ----------------
-//         if (allBtn) {
-//             allBtn.addEventListener("click", () => {
-//                 const count = gameState[key];
-//                 if (count <= 0) return;
-
-//                 const price = prices[key];
-//                 const percent = getRandomSellMultiplier();
-
-//                 const totalGain = Math.floor(price * percent * count);
-//                 const multigain = totalGain + (totalGain * gameState.multiplier);
-//                 console.log(multigain)
-
-//                 gameState[key] = 0;
-//                 gameState.cashCount += multigain;
-
-//                 saveGame();
-//                 updateUI();
-//             });
-//         }
-//     }
-//     saveGame()
-// }
 
 // ---------------- MULTIPLIER ---------------------
 
