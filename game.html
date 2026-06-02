@@ -2,123 +2,214 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Market</title>
+
 <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<h1>THE MARKET</h1>
+<div id="gameContainer">
 
-<button onclick="perkIncrease()">Add To Perks</button>
+<h1 class="header">THE MARKET</h1>
 
-<h2 id="cash"></h2>
-<h2 id="multiplier"></h2>
-<h2 id="payPercent"></h2>
+<a href="index.html">
+<button class="btn">Back</button>
+</a>
 
-<!-- ITEMS -->
+<button class="btn" onclick="perkIncrease()">Add To Perks</button>
+
+<h2 id="cash">Cash</h2>
+<h2 id="multiplier">Multiplier</h2>
+<h2 id="payPercent">Pay Percent</h2>
+<h2 id="countDown"></h2>
+
+<!-- ================= SHOP ================= -->
 <div id="grid">
 
-<div id="apples"><button id="apples">Buy Apples</button><h5 id="appleStock"></h5></div>
-<div id="bananas"><button id="bananas">Buy Bananas</button><h5 id="bananaStock"></h5></div>
-<div id="oranges"><button id="oranges">Buy Oranges</button><h5 id="orangeStock"></h5></div>
-<div id="yougurt"><button id="yougurt">Buy Yougurt</button><h5 id="yougurtStock"></h5></div>
-<div id="mango"><button id="mango">Buy Mango</button><h5 id="mangoStock"></h5></div>
-<div id="bread"><button id="bread">Buy Bread</button><h5 id="breadStock"></h5></div>
+<div class="item" id="apples">
+<h4>Apples</h4>
+<h5>10 Penties</h5>
+<h5 id="appleStock"></h5>
+<button class="btn" id="apples">Buy</button>
+</div>
 
-<div id="frozenAppleSlices"><button id="frozenAppleSlices">Buy Frozen Apple Slices</button><h5 id="frozenAppleSlicesStock"></h5></div>
-<div id="rawBanana"><button id="rawBanana">Buy Raw Banana</button><h5 id="rawBananaStock"></h5></div>
-<div id="frozenOrange"><button id="frozenOrange">Buy Frozen Orange</button><h5 id="frozenOrangeStock"></h5></div>
-<div id="frozenYougurt"><button id="frozenYougurt">Buy Frozen Yougurt</button><h5 id="frozenYougurtStock"></h5></div>
-<div id="frozenMangoSlices"><button id="frozenMangoSlices">Buy Frozen Mango Slices</button><h5 id="frozenMangoSlicesStock"></h5></div>
-<div id="toast"><button id="toast">Buy Toast</button><h5 id="toastStock"></h5></div>
-<div id="raisinToast"><button id="raisinToast">Buy Raisin Toast</button><h5 id="raisinToastStock"></h5></div>
+<div class="item" id="bananas">
+<h4>Bananas</h4>
+<h5>15 Penties</h5>
+<h5 id="bananaStock"></h5>
+<button class="btn" id="bananas">Buy</button>
+</div>
+
+<div class="item" id="oranges">
+<h4>Oranges</h4>
+<h5>20 Penties</h5>
+<h5 id="orangeStock"></h5>
+<button class="btn" id="oranges">Buy</button>
+</div>
+
+<div class="item" id="yougurt">
+<h4>Yougurt</h4>
+<h5>100 Penties</h5>
+<h5 id="yougurtStock"></h5>
+<button class="btn" id="yougurt">Buy</button>
+</div>
+
+<div class="item" id="mango">
+<h4>Mango</h4>
+<h5>200 Penties</h5>
+<h5 id="mangoStock"></h5>
+<button class="btn" id="mango">Buy</button>
+</div>
+
+<div class="item" id="bread">
+<h4>Bread</h4>
+<h5>500 Penties</h5>
+<h5 id="breadStock"></h5>
+<button class="btn" id="bread">Buy</button>
+</div>
+
+<div class="item" id="frozenAppleSlices">
+<h4>Frozen Apple Slices</h4>
+<h5>1000 Penties</h5>
+<h5 id="frozenAppleSlicesStock"></h5>
+<button class="btn" id="frozenAppleSlices">Buy</button>
+</div>
+
+<div class="item" id="rawBanana">
+<h4>Raw Bananas</h4>
+<h5>1500 Penties</h5>
+<h5 id="rawBananaStock"></h5>
+<button class="btn" id="rawBanana">Buy</button>
+</div>
+
+<div class="item" id="frozenOrange">
+<h4>Frozen Oranges</h4>
+<h5>2500 Penties</h5>
+<h5 id="frozenOrangeStock"></h5>
+<button class="btn" id="frozenOrange">Buy</button>
+</div>
+
+<div class="item" id="frozenYougurt">
+<h4>Frozen Yougurt</h4>
+<h5>5000 Penties</h5>
+<h5 id="frozenYougurtStock"></h5>
+<button class="btn" id="frozenYougurt">Buy</button>
+</div>
+
+<div class="item" id="frozenMangoSlices">
+<h4>Frozen Mango Slices</h4>
+<h5>10000 Penties</h5>
+<h5 id="frozenMangoSlicesStock"></h5>
+<button class="btn" id="frozenMangoSlices">Buy</button>
+</div>
+
+<div class="item" id="toast">
+<h4>Toast</h4>
+<h5>20000 Penties</h5>
+<h5 id="toastStock"></h5>
+<button class="btn" id="toast">Buy</button>
+</div>
+
+<div class="item" id="raisinToast">
+<h4>Raisin Toast</h4>
+<h5>100000 Penties</h5>
+<h5 id="raisinToastStock"></h5>
+<button class="btn" id="raisinToast">Buy</button>
+</div>
 
 </div>
 
-<!-- SELL SECTION (IMPORTANT IDS MATCH YOUR JS) -->
+<!-- ================= SELL ================= -->
 <div id="displayContainer">
 
 <div>
 <h2 id="appleDisplay"></h2>
-<button id="sell-apple">Sell</button>
-<button id="sell-all-apple">Sell All</button>
+<button class="btn" id="sell-apple">Sell</button>
+<button class="btn" id="sell-all-apple">Sell All</button>
 </div>
 
 <div>
 <h2 id="bananaDisplay"></h2>
-<button id="sell-banana">Sell</button>
-<button id="sell-all-banana">Sell All</button>
+<button class="btn" id="sell-banana">Sell</button>
+<button class="btn" id="sell-all-banana">Sell All</button>
 </div>
 
 <div>
 <h2 id="orangeDisplay"></h2>
-<button id="sell-orange">Sell</button>
-<button id="sell-all-orange">Sell All</button>
+<button class="btn" id="sell-orange">Sell</button>
+<button class="btn" id="sell-all-orange">Sell All</button>
 </div>
 
 <div>
 <h2 id="yougurtDisplay"></h2>
-<button id="sell-yougurt">Sell</button>
-<button id="sell-all-yougurt">Sell All</button>
+<button class="btn" id="sell-yougurt">Sell</button>
+<button class="btn" id="sell-all-yougurt">Sell All</button>
 </div>
 
 <div>
 <h2 id="mangoDisplay"></h2>
-<button id="sell-mango">Sell</button>
-<button id="sell-all-mango">Sell All</button>
+<button class="btn" id="sell-mango">Sell</button>
+<button class="btn" id="sell-all-mango">Sell All</button>
 </div>
 
 <div>
 <h2 id="breadDisplay"></h2>
-<button id="sell-bread">Sell</button>
-<button id="sell-all-bread">Sell All</button>
+<button class="btn" id="sell-bread">Sell</button>
+<button class="btn" id="sell-all-bread">Sell All</button>
 </div>
 
 <div>
 <h2 id="frozenAppleSlicesDisplay"></h2>
-<button id="sell-frozenAppleSlices">Sell</button>
-<button id="sell-all-frozenAppleSlices">Sell All</button>
+<button class="btn" id="sell-frozenAppleSlices">Sell</button>
+<button class="btn" id="sell-all-frozenAppleSlices">Sell All</button>
 </div>
 
 <div>
 <h2 id="rawBananaDisplay"></h2>
-<button id="sell-rawBanana">Sell</button>
-<button id="sell-all-rawBanana">Sell All</button>
+<button class="btn" id="sell-rawBanana">Sell</button>
+<button class="btn" id="sell-all-rawBanana">Sell All</button>
 </div>
 
 <div>
 <h2 id="frozenOrangeDisplay"></h2>
-<button id="sell-frozenOrange">Sell</button>
-<button id="sell-all-frozenOrange">Sell All</button>
+<button class="btn" id="sell-frozenOrange">Sell</button>
+<button class="btn" id="sell-all-frozenOrange">Sell All</button>
 </div>
 
 <div>
 <h2 id="frozenYougurtDisplay"></h2>
-<button id="sell-frozenYougurt">Sell</button>
-<button id="sell-all-frozenYougurt">Sell All</button>
+<button class="btn" id="sell-frozenYougurt">Sell</button>
+<button class="btn" id="sell-all-frozenYougurt">Sell All</button>
 </div>
 
 <div>
 <h2 id="frozenMangoSlicesDisplay"></h2>
-<button id="sell-frozenMangoSlices">Sell</button>
-<button id="sell-all-frozenMangoSlices">Sell All</button>
+<button class="btn" id="sell-frozenMangoSlices">Sell</button>
+<button class="btn" id="sell-all-frozenMangoSlices">Sell All</button>
 </div>
 
 <div>
 <h2 id="toastDisplay"></h2>
-<button id="sell-toast">Sell</button>
-<button id="sell-all-toast">Sell All</button>
+<button class="btn" id="sell-toast">Sell</button>
+<button class="btn" id="sell-all-toast">Sell All</button>
 </div>
 
 <div>
 <h2 id="raisinToastDisplay"></h2>
-<button id="sell-raisinToast">Sell</button>
-<button id="sell-all-raisinToast">Sell All</button>
+<button class="btn" id="sell-raisinToast">Sell</button>
+<button class="btn" id="sell-all-raisinToast">Sell All</button>
+</div>
+
 </div>
 
 </div>
 
 <script src="index.js"></script>
+
 </body>
 </html>
