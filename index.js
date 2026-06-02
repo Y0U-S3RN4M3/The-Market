@@ -633,6 +633,11 @@ function restartGame() {
 
     window.location.href = "index.html";
 }
+
+setInterval(() => {
+    saveGame();
+    loadStock(); // optional safety sync
+}, 3000);
 // ---------------- INIT ----------------
 
 function initiate() {
