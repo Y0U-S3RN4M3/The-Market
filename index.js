@@ -144,9 +144,8 @@ function setCountDown() {
 
         const el = document.getElementById("countDown");
         if (el) {
-            el.textContent = You have ${String(m).padStart(2, "0")}m ${String(s).padStart(2, "0")}s left...;
+            el.textContent = `You have ${String(m).padStart(2, "0")}m ${String(s).padStart(2, "0")}s left...`;
         }
-        saveGame()
     }, 1000);
 }
 
@@ -194,7 +193,7 @@ function updateCrypto() {
     let bitcoinChange = Math.floor(Math.random() * (bitcoinMax - bitcoinMin + 1)) + bitcoinMin;
     gameState.BitcoinVal += bitcoinChange;
     console.log("Bitcoin:", gameState.BitcoinVal, "Change:", bitcoinChange);
-    document.getElementById("BitcoinDisplay").textContent = 1 BITCOIN: ${gameState.BitcoinVal} Penties;
+    document.getElementById("BitcoinDisplay").textContent = `1 BITCOIN: ${gameState.BitcoinVal} Penties`;
 
     let litecoinMin = -10;
     let litecoinMax = 2.5;
@@ -207,7 +206,7 @@ function updateCrypto() {
     let litecoinChange = roundDownToDecimals((Math.random() * (litecoinMax - litecoinMin)) + litecoinMin, 2);
     gameState.LitecoinVal += litecoinChange;
     console.log("Litecoin:", gameState.LitecoinVal, "Change:", litecoinChange);
-    document.getElementById("LitecoinDisplay").textContent = 1 LITECOIN: ${gameState.LitecoinVal.toFixed(2)} Penties;
+    document.getElementById("LitecoinDisplay").textContent = `1 LITECOIN: ${gameState.LitecoinVal.toFixed(2)} Penties`;
 
     let dogeMin = -1000000000;
     let dogeMax = 250000000;
@@ -220,7 +219,7 @@ function updateCrypto() {
     let dogeChange = Math.floor(Math.random() * (dogeMax - dogeMin)) + dogeMin;
     gameState.DogecoinVal += dogeChange;
     console.log("Dogecoin:", gameState.DogecoinVal, "Change:", dogeChange);
-    document.getElementById("DogecoinDisplay").textContent = 1 DOGECOIN: ${gameState.DogecoinVal.toFixed(6)} Penties;
+    document.getElementById("DogecoinDisplay").textContent = `1 DOGECOIN: ${gameState.DogecoinVal.toFixed(6)} Penties`;
 
     saveGame()
 }
@@ -333,61 +332,61 @@ function updateUI() {
 
     const btcEl = document.getElementById("Bitcoins");
     if (btcEl) {
-        btcEl.textContent = Bitcoins: ${gameState.Bitcoin.toFixed(6)};
+        btcEl.textContent = `Bitcoins: ${gameState.Bitcoin.toFixed(6)}`;
     }
 
     const ltcEl = document.getElementById("Litecoins");
     if (ltcEl) {
-        ltcEl.textContent = Litecoins: ${gameState.Litecoin.toFixed(6)};
+        ltcEl.textContent = `Litecoins: ${gameState.Litecoin.toFixed(6)}`;
     }
 
     const dogeEl = document.getElementById("Dogecoins");
     if (dogeEl) {
-        dogeEl.textContent = Dogecoins: ${gameState.Dogecoin.toFixed(6)};
+        dogeEl.textContent = `Dogecoins: ${gameState.Dogecoin.toFixed(6)}`;
     }
 
     document.getElementById("BitcoinDisplay").textContent =
-        1 BITCOIN: ${gameState.BitcoinVal} Penties;
+        `1 BITCOIN: ${gameState.BitcoinVal} Penties`;
 
     document.getElementById("LitecoinDisplay").textContent =
-        1 LITECOIN: ${gameState.LitecoinVal} Penties;
+        `1 LITECOIN: ${gameState.LitecoinVal} Penties`;
 
     document.getElementById("DogecoinDisplay").textContent =
-        1 DOGECOIN: ${gameState.DogecoinVal} Penties;
+        `1 DOGECOIN: ${gameState.DogecoinVal} Penties`;
 
     for (const key in gameState) {
         if (key === "cashCount") continue;
 
-        const el = document.getElementById(${key.replace(/Count$/, "")}Display);
+        const el = document.getElementById(`${key.replace(/Count$/, "")}Display`);
         if (el) {
             el.textContent =
-                ${capitalize(key.replace(/Count$/, ""))}: ${gameState[key]};
+                `${capitalize(key.replace(/Count$/, ""))}: ${gameState[key]}`;
         }
     }
 
     const cash = document.getElementById("cash");
     if (cash) {
-        cash.textContent = You have ${gameState.cashCount.toLocaleString()} Penties;
+        cash.textContent = `You have ${gameState.cashCount.toLocaleString()} Penties`;
     }
 
     const multiplierEl = document.getElementById("multiplier");
 
     if (multiplierEl) {
-        multiplierEl.textContent = Multiplier: ${gameState.multiplier.toFixed(3)};
+        multiplierEl.textContent = `Multiplier: ${gameState.multiplier.toFixed(3)}`;
     }
 
     const payPercentEl = document.getElementById("payPercent");
 
     if (payPercentEl) {
-        payPercentEl.textContent = Pay Percent: ${gameState.payPercent.toFixed(1)}%;
+        payPercentEl.textContent = `Pay Percent: ${gameState.payPercent.toFixed(1)}%`;
     }
     // STOCK DISPLAY
     for (const key in stock) {
         const base = key.replace(/Count$/, "");
-        const el = document.getElementById(${base}Stock);
+        const el = document.getElementById(`${base}Stock`);
 
         if (el) {
-            el.textContent = Stock: ${stock[key]};
+            el.textContent = `Stock: ${stock[key]}`;
         }
     }
 
@@ -395,7 +394,6 @@ function updateUI() {
         document.body.classList.add("event");
         document.body.style.margin = '0px';
     }
-    saveGame()
 }
 // ---------------- BUY ----------------
 
@@ -425,7 +423,6 @@ function setupBuyButtons() {
             }
         });
     }
-    saveGame()
 }
 
 // ---------------- SELL ----------------
@@ -450,8 +447,8 @@ function setupSellButtons() {
 
         const itemName = camelToKebab(key);
 
-        const singleBtn = document.getElementById(sell-${itemName});
-        const allBtn = document.getElementById(sell-all-${itemName}s);
+        const singleBtn = document.getElementById(`sell-${itemName}`);
+        const allBtn = document.getElementById(`sell-all-${itemName}s`);
 
         // ---------------- SELL ONE ----------------
         if (singleBtn) {
@@ -491,7 +488,6 @@ function setupSellButtons() {
             });
         }
     }
-    saveGame()
 }
 
 // ---------------- MULTIPLIER ---------------------
@@ -500,10 +496,10 @@ function perkIncrease() {
     if(gameState.cashCount >= 100000){
         gameState.multiplier += Math.sqrt(gameState.cashCount) / 10000;
         const multiplier = document.getElementById("multiplier");
-        multiplier.textContent = Multiplier: ${gameState.multiplier.toFixed(3)};
+        multiplier.textContent = `Multiplier: ${gameState.multiplier.toFixed(3)}`;
         gameState.payPercent -= Math.sqrt(gameState.cashCount) / 1000
         const payPercent = document.getElementById("payPercent");
-        payPercent.textContent = Pay Percent: ${gameState.payPercent.toFixed(1)}%
+        payPercent.textContent = `Pay Percent: ${gameState.payPercent.toFixed(1)}%`
         gameState.cashCount = 10;
         gameState.appleCount =  0;
         gameState.bananaCount = 0;
@@ -633,11 +629,6 @@ function restartGame() {
 
     window.location.href = "index.html";
 }
-
-setInterval(() => {
-    saveGame();
-    loadStock(); // optional safety sync
-}, 3000);
 // ---------------- INIT ----------------
 
 function initiate() {
@@ -652,7 +643,7 @@ function initiate() {
 
     if (cash) {
         window.cashLoop = setInterval(() => {
-            cash.textContent = You have ${gameState.cashCount.toLocaleString()} Penties;
+            cash.textContent = `You have ${gameState.cashCount.toLocaleString()} Penties`;
             checkWin();
         }, 500);
     }
