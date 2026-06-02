@@ -395,7 +395,6 @@ function updateUI() {
         document.body.classList.add("event");
         document.body.style.margin = '0px';
     }
-    saveGame()
 }
 // ---------------- BUY ----------------
 
