@@ -443,16 +443,32 @@ function camelToKebab(str) {
         .toLowerCase();
 }
 
+const sellButtonMap = {
+    appleCount: "apple",
+    bananaCount: "banana",
+    orangeCount: "orange",
+    yougurtCount: "yougurt",
+    mangoCount: "mango",
+    breadCount: "bread",
+    frozenAppleSlicesCount: "frozen-apple-slices",
+    rawBananaCount: "raw-banana",
+    frozenOrangeCount: "frozen-orange",
+    frozenYougurtCount: "frozen-yougurt",
+    frozenMangoSlicesCount: "frozen-mango-slices",
+    toastCount: "toast",
+    raisinToastCount: "raisin-toast",
+};
+
 function setupSellButtons() {
     for (const key in gameState) {
         if (key === "cashCount") continue;
 
-        const itemName = camelToKebab(key);
+        const itemName = sellButtonMap[key];
+        if (!itemName) continue;
 
         const singleBtn = document.getElementById(`sell-${itemName}`);
-        const allBtn = document.getElementById(`sell-all-${itemName}s`);
+        const allBtn = document.getElementById(`sell-all-${itemName}`);
 
-        // ---------------- SELL ONE ----------------
         if (singleBtn) {
             singleBtn.addEventListener("click", () => {
                 if (gameState[key] <= 0) return;
@@ -464,12 +480,11 @@ function setupSellButtons() {
                 gameState[key] -= 1;
                 gameState.cashCount += multigain;
 
-                saveGame();
                 updateUI();
+                saveGame();
             });
         }
 
-        // ---------------- SELL ALL ----------------
         if (allBtn) {
             allBtn.addEventListener("click", () => {
                 const count = gameState[key];
@@ -480,18 +495,66 @@ function setupSellButtons() {
 
                 const totalGain = Math.floor(price * percent * count);
                 const multigain = totalGain + (totalGain * gameState.multiplier);
-                console.log(multigain)
 
                 gameState[key] = 0;
                 gameState.cashCount += multigain;
 
-                saveGame();
                 updateUI();
+                saveGame();
             });
         }
     }
-    saveGame()
 }
+
+// function setupSellButtons() {
+//     for (const key in gameState) {
+//         if (key === "cashCount") continue;
+
+//         const itemName = camelToKebab(key);
+
+//         const singleBtn = document.getElementById(`sell-${itemName}`);
+//         const allBtn = document.getElementById(`sell-all-${itemName}s`);
+
+//         // ---------------- SELL ONE ----------------
+//         if (singleBtn) {
+//             singleBtn.addEventListener("click", () => {
+//                 if (gameState[key] <= 0) return;
+
+//                 const price = prices[key];
+//                 const gain = Math.floor(price * getRandomSellMultiplier());
+//                 const multigain = gain + (gain * gameState.multiplier);
+
+//                 gameState[key] -= 1;
+//                 gameState.cashCount += multigain;
+
+//                 saveGame();
+//                 updateUI();
+//             });
+//         }
+
+//         // ---------------- SELL ALL ----------------
+//         if (allBtn) {
+//             allBtn.addEventListener("click", () => {
+//                 const count = gameState[key];
+//                 if (count <= 0) return;
+
+//                 const price = prices[key];
+//                 const percent = getRandomSellMultiplier();
+
+//                 const totalGain = Math.floor(price * percent * count);
+//                 const multigain = totalGain + (totalGain * gameState.multiplier);
+//                 console.log(multigain)
+
+//                 gameState[key] = 0;
+//                 gameState.cashCount += multigain;
+
+//                 saveGame();
+//                 updateUI();
+//             });
+//         }
+//     }
+//     saveGame()
+// }
 
 // ---------------- MULTIPLIER ---------------------
 
