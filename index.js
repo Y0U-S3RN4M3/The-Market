@@ -146,6 +146,7 @@ function setCountDown() {
         if (el) {
             el.textContent = `You have ${String(m).padStart(2, "0")}m ${String(s).padStart(2, "0")}s left...`;
         }
+        saveGame()
     }, 1000);
 }
 
@@ -394,6 +395,7 @@ function updateUI() {
         document.body.classList.add("event");
         document.body.style.margin = '0px';
     }
+    saveGame()
 }
 // ---------------- BUY ----------------
 
@@ -423,6 +425,7 @@ function setupBuyButtons() {
             }
         });
     }
+    saveGame()
 }
 
 // ---------------- SELL ----------------
@@ -488,6 +491,7 @@ function setupSellButtons() {
             });
         }
     }
+    saveGame()
 }
 
 // ---------------- MULTIPLIER ---------------------
